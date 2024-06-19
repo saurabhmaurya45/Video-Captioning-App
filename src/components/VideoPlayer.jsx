@@ -11,7 +11,7 @@ function VideoPlayer({ videoUrl, captions }) {
         const interval = setInterval(() => {
             if (captions.length > 0) {
                 const currentTime = playerRef.current.getCurrentTime();
-                const caption = captions.find(c => currentTime >= c.time.start && currentTime <= c.time.end);
+                const caption = captions.find(caption => currentTime >= caption.time.start && currentTime <= caption.time.end);
                 setCurrentCaption(caption ? caption.text : '');
             }
         }, 500);
@@ -21,7 +21,7 @@ function VideoPlayer({ videoUrl, captions }) {
 
     return (
         <div className="video-player relative bg-black flex justify-center items-center mb-10">
-            <ReactPlayer url={videoUrl} ref={playerRef} controls className="w-[40rem] h-[40rem]" />
+            <ReactPlayer url={videoUrl} ref={playerRef} controls className="" />
             <div className="captions absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center p-2">
                 {currentCaption}
             </div>

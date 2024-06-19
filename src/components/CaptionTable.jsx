@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import {faTrash } from '@fortawesome/free-solid-svg-icons';
 import { convertSecondsToTime,convertTimeToSeconds } from '../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faTrash } from '@fortawesome/free-solid-svg-icons';
 
 
 const CaptionTable = ({ captions, setCaptions }) => {
     const [editing, setEditing] = useState({ rowIndex: -1, field: '' });
 
-    const handleEdit = (index, field, value) => {
+    const editChangeHandler = (index, field, value) => {
         const updatedCaptions = [...captions];
         if (field === 'text') {
             updatedCaptions[index].text = value;
@@ -19,15 +19,15 @@ const CaptionTable = ({ captions, setCaptions }) => {
         setCaptions(updatedCaptions);
     };
 
-    const handleCellDoubleClick = (index, field) => {
+    const cellDoubleClickHandler = (index, field) => {
         setEditing({ rowIndex: index, field: field });
     };
 
-    const handleCellBlur = () => {
+    const cellBlurHandler = () => {
         setEditing({ rowIndex: -1, field: '' });
     };
 
-    const handleDelete = (index) => {
+    const deleteHandler = (index) => {
         const updatedCaptions = captions.filter((_, i) => i !== index);
         setCaptions(updatedCaptions);
     };
@@ -49,14 +49,14 @@ const CaptionTable = ({ captions, setCaptions }) => {
                         <td className="py-2 px-4 border-b text-center ">{index + 1}</td>
                         <td
                             className="py-2 px-4 border-b cursor-pointer"
-                            onDoubleClick={() => handleCellDoubleClick(index, 'text')}
+                            onDoubleClick={() => cellDoubleClickHandler(index, 'text')}
                         >
                             {editing.rowIndex === index && editing.field === 'text' ? (
                                 <input
                                     type="text"
                                     value={caption.text}
-                                    onChange={(e) => handleEdit(index, 'text', e.target.value)}
-                                    onBlur={handleCellBlur}
+                                    onChange={(e) => editChangeHandler(index, 'text', e.target.value)}
+                                    onBlur={cellBlurHandler}
                                     className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
@@ -65,14 +65,14 @@ const CaptionTable = ({ captions, setCaptions }) => {
                         </td>
                         <td
                             className="py-2 px-4 border-b text-center cursor-pointer"
-                            onDoubleClick={() => handleCellDoubleClick(index, 'start')}
+                            onDoubleClick={() => cellDoubleClickHandler(index, 'start')}
                         >
                             {editing.rowIndex === index && editing.field === 'start' ? (
                                 <input
                                     type="text"
                                     value={convertSecondsToTime(caption.time.start)}
-                                    onChange={(e) => handleEdit(index, 'start', e.target.value)}
-                                    onBlur={handleCellBlur}
+                                    onChange={(e) => editChangeHandler(index, 'start', e.target.value)}
+                                    onBlur={cellBlurHandler}
                                     className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
@@ -81,14 +81,14 @@ const CaptionTable = ({ captions, setCaptions }) => {
                         </td>
                         <td
                             className="py-2 px-4 border-b text-center cursor-pointer"
-                            onDoubleClick={() => handleCellDoubleClick(index, 'end')}
+                            onDoubleClick={() => cellDoubleClickHandler(index, 'end')}
                         >
                             {editing.rowIndex === index && editing.field === 'end' ? (
                                 <input
                                     type="text"
                                     value={convertSecondsToTime(caption.time.end)}
-                                    onChange={(e) => handleEdit(index, 'end', e.target.value)}
-                                    onBlur={handleCellBlur}
+                                    onChange={(e) => editChangeHandler(index, 'end', e.target.value)}
+                                    onBlur={cellBlurHandler}
                                     className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
@@ -96,7 +96,7 @@ const CaptionTable = ({ captions, setCaptions }) => {
                             )}
                         </td>
                         <td className="py-2 px-4 border-b text-center">
-                            <button onClick={() => handleDelete(index)} className="text-red-500 hover:text-red-700">
+                            <button onClick={() => deleteHandler(index)} className="text-red-500 hover:text-red-700">
                                 <FontAwesomeIcon icon={faTrash} />
                             </button>
                         </td>
