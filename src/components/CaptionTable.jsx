@@ -46,9 +46,9 @@ const CaptionTable = ({ captions, setCaptions }) => {
             <tbody>
                 {captions.map((caption, index) => (
                     <tr key={index}>
-                        <td className="py-2 px-4 border-b text-center">{index + 1}</td>
+                        <td className="py-2 px-4 border-b text-center ">{index + 1}</td>
                         <td
-                            className="py-2 px-4 border-b"
+                            className="py-2 px-4 border-b cursor-pointer"
                             onDoubleClick={() => handleCellDoubleClick(index, 'text')}
                         >
                             {editing.rowIndex === index && editing.field === 'text' ? (
@@ -57,14 +57,14 @@ const CaptionTable = ({ captions, setCaptions }) => {
                                     value={caption.text}
                                     onChange={(e) => handleEdit(index, 'text', e.target.value)}
                                     onBlur={handleCellBlur}
-                                    className="w-full p-1 border border-gray-300 rounded"
+                                    className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
                                 caption.text
                             )}
                         </td>
                         <td
-                            className="py-2 px-4 border-b text-center"
+                            className="py-2 px-4 border-b text-center cursor-pointer"
                             onDoubleClick={() => handleCellDoubleClick(index, 'start')}
                         >
                             {editing.rowIndex === index && editing.field === 'start' ? (
@@ -73,14 +73,14 @@ const CaptionTable = ({ captions, setCaptions }) => {
                                     value={convertSecondsToTime(caption.time.start)}
                                     onChange={(e) => handleEdit(index, 'start', e.target.value)}
                                     onBlur={handleCellBlur}
-                                    className="w-full p-1 border border-gray-300 rounded"
+                                    className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
                                 convertSecondsToTime(caption.time.start)
                             )}
                         </td>
                         <td
-                            className="py-2 px-4 border-b text-center"
+                            className="py-2 px-4 border-b text-center cursor-pointer"
                             onDoubleClick={() => handleCellDoubleClick(index, 'end')}
                         >
                             {editing.rowIndex === index && editing.field === 'end' ? (
@@ -89,7 +89,7 @@ const CaptionTable = ({ captions, setCaptions }) => {
                                     value={convertSecondsToTime(caption.time.end)}
                                     onChange={(e) => handleEdit(index, 'end', e.target.value)}
                                     onBlur={handleCellBlur}
-                                    className="w-full p-1 border border-gray-300 rounded"
+                                    className="w-full p-1 border border-gray-300 rounded cursor-pointer"
                                 />
                             ) : (
                                 convertSecondsToTime(caption.time.end)
