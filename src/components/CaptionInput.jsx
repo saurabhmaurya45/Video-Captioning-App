@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { convertTimeToSeconds } from '../utils';
+import { convertTimeToSeconds, showError, validateInputs } from '../utils';
 import CaptionTable from './CaptionTable';
 
 function CaptionInput({ videoUrl, setVideoUrl, captions, setCaptions }) {
@@ -11,6 +11,11 @@ function CaptionInput({ videoUrl, setVideoUrl, captions, setCaptions }) {
 
 
   const addCaption = () => {
+    const error = validateInputs(captionText,timestampStart,timestampEnd)
+    if(Object.keys(error).length){
+      Object.keys(error).map((key)=>showError(error[key]))
+      return 
+    }
     if (captionText && timestampStart && timestampEnd) {
       setCaptions([...captions, { text: captionText, time: { start: convertTimeToSeconds(timestampStart), end: convertTimeToSeconds(timestampEnd) } }]);
       setCaptionText('');
