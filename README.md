@@ -7,15 +7,15 @@ Welcome to the Video Captioning App, a modern web application built with Vite, R
 
 ## 🍕 Features:
 
-✅ **Video Play and Pause**: Control video playback directly within the app.
-✅ **Caption Management**: Add, edit, and delete captions with associated timestamps.
-✅ **Live Caption Display**: See captions in real-time as the video plays.
+✅ **Video Play and Pause**: Control video playback directly within the app.<br/>
+✅ **Caption Management**: Add, edit, and delete captions with associated timestamps.<br/>
+✅ **Live Caption Display**: See captions in real-time as the video plays.<br/>
 
 ## ⚙ Technology Used:
 
-✅ **React**: A JavaScript library for building user interfaces.
-✅ **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-✅ **Git & GitHub**: Version control and collaboration platform for software development.
+✅ **React**: A JavaScript library for building user interfaces.<br/>
+✅ **Tailwind CSS**: A utility-first CSS framework for rapid UI development.<br/>
+✅ **Git & GitHub**: Version control and collaboration platform for software development.<br/>
 
 ## 🚀 Getting Started
 
